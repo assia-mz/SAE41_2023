@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="@string/settings"
+        android:key="parametres">
+        <CheckBoxPreference
+            android:key="regle_croix"
+            android:title="Règle 1"
+            android:summary="Commencer le jeu avec un croix de 24 intersections"
+            android:defaultValue="false"/>
+        <CheckBoxPreference
+            android:key="regle_ligne"
+            android:title="Règle 2"
+            android:summary="Interdit de tracer une ligne qui prolonge une ligne"
+            android:defaultValue="false"/>
+    </PreferenceCategory>
+</PreferenceScreen>

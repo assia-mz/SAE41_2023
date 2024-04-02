@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/play"
+        android:layout_centerInParent="true"
+        android:paddingBottom="15dp"
+        android:text="@string/menu_msg"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/black"
+        android:textSize="45sp"></TextView>
+
+    <Button
+        android:id="@+id/play"
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:layout_centerInParent="true"
+        android:text="@string/play_btn"
+        android:textSize="25sp"></Button>
+
+
+    <Button
+        android:id="@+id/quit"
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:layout_below="@+id/play"
+        android:layout_centerInParent="true"
+        android:text="@string/quit"
+        android:textSize="25sp"
+        ></Button>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/parametres"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:clickable="true"
+        app:srcCompat="@android:drawable/ic_menu_preferences" />
+
+</RelativeLayout>
