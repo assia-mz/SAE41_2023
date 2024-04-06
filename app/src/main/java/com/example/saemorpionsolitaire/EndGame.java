@@ -33,7 +33,7 @@ public class EndGame {
      * @param tailleLine Taille maximale d'une ligne.
      * @return true si le jeu est terminé, sinon false.
      */
-    public static boolean finJeu(HashMap<Point, List<Line>> dicoPoint, int tailleLine) {
+    public static boolean endGame(HashMap<Point, List<Line>> dicoPoint, int tailleLine) {
         for (Point dot : dicoPoint.keySet()) {
             for (Point direction : EndGame.directionList) {
                 boolean flag = false;

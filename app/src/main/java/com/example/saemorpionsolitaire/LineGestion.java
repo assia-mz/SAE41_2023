@@ -19,12 +19,13 @@ public class LineGestion {
      *
      * @param line           Ligne à vérifier.
      * @param hashMapDotLine Dictionnaire des points et des lignes associées.
+     * @param rule2 Boleen qui permet de savoir si la regle n°2 est active ou pas
      * @return Le nouveau point ajouté au dictionnaire si la ligne est valide, sinon null.
      */
-    public static Point isValide(Line line, HashMap<Point,List<Line>> hashMapDotLine) {
+    public static Point isValide(Line line, HashMap<Point, List<Line>> hashMapDotLine, boolean rule2) {
         if (line != null) {
             if (line.haveLongueur(LineGestion.dotNbr)) {
-                // Calcule la direction de la ligne
+                // Calcul de la direction de la ligne
                 int directionX = (int)(line.getArrivee().getX() - line.getDepart().getX());
                 int directionY = (int)(line.getArrivee().getY() - line.getDepart().getY());
                 if (directionX > 0) {
@@ -44,15 +45,17 @@ public class LineGestion {
                 List<List<Line>> listDot = new ArrayList<>();
                 Point start = line.getDepart().copy();
                 Point newDot = null;
-                int i;
                 int cC = 0;
-                for (i = 0; i <= LineGestion.dotNbr; i++) {
+                for (int i = 0; i <= LineGestion.dotNbr; i++) {
                     List<Line> point = hashMapDotLine.get(start);
                     if (point != null) {
                         listDot.add(point);
                         cC++;
-                        for (Line lineCroise: point) {
-                            if (!LineGestion.LIGNEVALIDE) {
+                        for (Line lineCroise : point) {
+                            if (rule2 && lineCroise != line) {
+                                prolongementLine = true; // Si la règle 2 est activée, vérifie s'il y a un prolongement de ligne
+                            }
+                            if (!LIGNEVALIDE) {
                                 if (listeLineCroise.contains(lineCroise)) {
                                     prolongementLine = true;
                                 } else {

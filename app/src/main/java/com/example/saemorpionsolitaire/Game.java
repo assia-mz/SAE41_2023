@@ -10,6 +10,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 import androidx.core.content.ContextCompat;
 import java.util.ArrayList;
@@ -37,6 +38,9 @@ public class Game extends View {
     HashMap<Point,List<Line>> hashMapDotLine;
     private Line currentLine;
     private int score;
+    private boolean rule2;
+
+    private boolean isTxtFinishWritten = false;
 
     private boolean isGameRN = false;
 
@@ -62,33 +66,41 @@ public class Game extends View {
         }
     }
 
-    /*@Override
+    @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
         setupButton();
-    }*/
+    }
 
-    /*private void setupButton() {
+    private void setupButton() {
         Button button = new Button(getContext());
-        button.setText("Button");
+        button.setText("Recentrer");
 
         // Set layout parameters to align the button to the bottom right corner
-        LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        params.gravity = Gravity.BOTTOM | Gravity.END;
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT
+        );
+        params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        params.addRule(RelativeLayout.ALIGN_PARENT_END);
+        params.setMargins(16, 16, 16, 16); // Add margins if needed
+
         button.setLayoutParams(params);
 
         // Add the button to the layout
-        ((ViewGroup) getParent()).addView(button);
+        ((RelativeLayout) getParent()).addView(button);
 
         // Set click listener for the button
         button.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Handle button click event
-                Toast.makeText(getContext(), "Button clicked!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), "On recentre", Toast.LENGTH_SHORT).show();
+                recenterMap();
             }
         });
-    }*/
+    }
+
 
 
     public void moveMap(Point vecteur){
@@ -131,6 +143,10 @@ public class Game extends View {
         this.fillList();
     }
 
+    public void setRule2(boolean rule2){
+        this.rule2 = rule2;
+    }
+
     public HashMap<Point, List<Line>> getHashMapDotLine(){
         return this.hashMapDotLine;
     }
@@ -150,15 +166,18 @@ public class Game extends View {
     }
 
     public void validateLine(){
-        Point newDot = LineGestion.isValide(this.currentLine, this.hashMapDotLine);
+        Point newDot = LineGestion.isValide(this.currentLine, this.hashMapDotLine, rule2);
         if (newDot != null){
             this.score ++;
             this.lineList.add(this.currentLine);
             this.dotList.add(newDot);
         }
         this.currentLine = null;
-        if (EndGame.finJeu(this.hashMapDotLine, 4)){
-            Toast.makeText(getContext(), "Félicitation !", Toast.LENGTH_SHORT).show();
+        if (EndGame.endGame(this.hashMapDotLine, 4)&&(isTxtFinishWritten==true)){
+            //Toast.makeText(getContext(), "Aucun mouvement n'est disponible ! Votre score est de " + score + ". Félicitation !", Toast.LENGTH_SHORT).show();
+        } else if (EndGame.endGame(this.hashMapDotLine, 4)){
+            Toast.makeText(getContext(), "Aucun mouvement n'est disponible ! Votre score est de " + score + ". Félicitation !", Toast.LENGTH_LONG).show();
+            isTxtFinishWritten=true;
         }
         this.invalidate();
     }
