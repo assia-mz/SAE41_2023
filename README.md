@@ -17,11 +17,7 @@ La deuxième permet d'empêcher le prolongement d'un trait.
 
 ## Demo
 
-
-https://github.com/assia-mz/SaeMorpionSolitaire/assets/125897672/408db7d2-6afc-4be3-a6d6-dad752875f78
-
-
-
+https://github.com/assia-mz/SaeMorpionSolitaire/assets/125897672/651d37ae-01b1-40bd-84a0-6eb98d50e00b
 
 ## Auteurs
 
