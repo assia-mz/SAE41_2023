@@ -174,7 +174,7 @@ public class Game extends View {
         }
         this.currentLine = null;
         if (EndGame.endGame(this.hashMapDotLine, 4)&&(isTxtFinishWritten==true)){
-            //Toast.makeText(getContext(), "Aucun mouvement n'est disponible ! Votre score est de " + score + ". Félicitation !", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Aucun mouvement n'est possible.", Toast.LENGTH_SHORT).show();
         } else if (EndGame.endGame(this.hashMapDotLine, 4)){
             Toast.makeText(getContext(), "Aucun mouvement n'est disponible ! Votre score est de " + score + ". Félicitation !", Toast.LENGTH_LONG).show();
             isTxtFinishWritten=true;

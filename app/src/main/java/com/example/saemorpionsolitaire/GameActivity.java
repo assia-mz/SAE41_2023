@@ -31,7 +31,7 @@ public class GameActivity extends AppCompatActivity {
             setupGame(3);
         } else {
             // Initialise le jeu avec la configuration par défaut (4 croix par ligne)
-            setupGame(4);
+            setupGame(2);
         }
 
         // Vérifie si l'intent contient l'extra pour la règle 2
