@@ -30,7 +30,7 @@ public class HomeController implements View.OnClickListener {
         int id = v.getId();
 
         if (id == R.id.play) {
-            view.showPlayToast();
+            //view.showPlayToast();
             Intent intent = new Intent(context, GameActivity.class);
 
             // Passe les valeurs des paramètres comme des extra avec leurs clé respectives
@@ -41,10 +41,11 @@ public class HomeController implements View.OnClickListener {
             context.startActivity(intent);
 
         } else if (id == R.id.parametres) {
-            view.showSettingsToast();
+            //view.showSettingsToast();
             Intent intent = new Intent(context, SettingsActivity.class);
             view.showDebugToast();
             context.startActivity(intent);
+
         } else if (id == R.id.quit) {
             ((MainActivity) context).finishAffinity();
         }

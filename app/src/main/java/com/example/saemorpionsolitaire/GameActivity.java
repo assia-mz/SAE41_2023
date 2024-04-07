@@ -31,13 +31,13 @@ public class GameActivity extends AppCompatActivity {
             setupGame(3);
         } else {
             // Initialise le jeu avec la configuration par défaut (4 croix par ligne)
-            setupGame(2);
+            setupGame(4);
         }
 
         // Vérifie si l'intent contient l'extra pour la règle 2
         if (getIntent().hasExtra("RULE_2")) {
             // Affiche un message Toast indiquant que la règle 2 est activée
-            Toast.makeText(this, "Règle 2 activée: " + rule2, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Règle 2 activée: " + rule2, Toast.LENGTH_SHORT).show();
             map.setRule2(rule2);
         } else {
             // Affiche un message Toast indiquant qu'aucun paramètre n'est passé
